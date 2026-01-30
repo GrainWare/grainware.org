@@ -1,0 +1,36 @@
+{
+  "name": "grainware-org",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.6",
+    "@astrojs/node": "^9.5.2",
+    "@astrojs/rss": "^4.0.15",
+    "@fontsource/comic-relief": "^5.2.2",
+    "@tailwindcss/vite": "^4.1.18",
+    "astro": "^5.16.15",
+    "dayjs": "^1.11.19",
+    "json5": "^2.2.3",
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@iconify/json": "^2.2.432",
+    "@iconify/tailwind4": "^1.2.1",
+    "@tailwindcss/typography": "^0.5.19",
+    "@types/node": "^25.0.10",
+    "node-addon-api": "^8.5.0",
+    "node-gyp": "^12.1.0",
+    "prettier": "3.8.1",
+    "prettier-plugin-astro": "0.14.1",
+    "prettier-plugin-tailwindcss": "0.7.2",
+    "sharp": "^0.34.5"
+  }
+}

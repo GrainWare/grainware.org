@@ -1,0 +1,68 @@
+---
+import { Image } from "astro:assets";
+import NavBar from "../components/NavBar.astro";
+import Layout from "../layouts/Layout.astro";
+import X8831 from "../components/88x31.astro";
+
+import agawave from "@a/img/agawave.gif";
+---
+
+<Layout>
+  <Fragment slot="head">
+    <!-- Primary Meta Tags -->
+    <title>grainware</title>
+    <meta name="description" content="join us now and share the software" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="grainware" />
+    <meta
+      property="og:description"
+      content="join us now and share the software"
+    />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="grainware" />
+    <meta
+      property="twitter:description"
+      content="join us now and share the software"
+    />
+  </Fragment>
+
+  <NavBar />
+  <div class="m-8">
+    <div class="my-8 flex items-center *:space-x-4">
+      <div class="text-grain-100 drop-shadow-grain-100 text-9xl drop-shadow-lg">
+        grain.
+      </div>
+    </div>
+    <p class="text-grain-100 mb-2 text-2xl font-bold">
+      Congrats! you found the secret grain page!
+    </p>
+    <p class="text-grain-50 mb-4 text-2xl font-black">
+      HERE IS A PICTURE OF GRAINS
+    </p>
+    <Image
+      src="/assets/grain.avif"
+      alt="the most accurate image in the world"
+      width="480"
+      height="360"
+      class="mb-4"
+    />
+
+    <hr />
+
+    <h1
+      class="wavy-text mt-8 mb-2 text-4xl font-bold text-red-100 drop-shadow-sm drop-shadow-red-100"
+      aria-label="badges"
+    >
+      <span aria-hidden="true">b</span><span aria-hidden="true">a</span><span
+        aria-hidden="true">d</span
+      ><span aria-hidden="true">g</span><span aria-hidden="true">e</span><span
+        aria-hidden="true">s</span
+      >
+    </h1>
+    <X8831 />
+  </div>
+</Layout>

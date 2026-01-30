@@ -1,0 +1,68 @@
+---
+import { Image } from "astro:assets";
+import type { InferEntrySchema, RenderedContent } from "astro:content";
+import dayjs from "dayjs";
+
+interface Props {
+  post: {
+    id: string;
+    body?: string;
+    collection: "blog";
+    data: InferEntrySchema<"blog">;
+    rendered?: RenderedContent;
+    filePath?: string;
+  };
+  hoverAnimation?: boolean;
+}
+
+const { post, hoverAnimation } = Astro.props;
+---
+
+<div
+  class="m-8 grid min-h-54 grid-cols-2 grid-rows-1 drop-shadow-md drop-shadow-black"
+>
+  <div
+    class={`absolute z-10 col-span-2 flex h-full w-full flex-col items-start rounded-2xl 
+      ${
+        hoverAnimation
+          ? "bg-black/25 transition-all duration-200 hover:bg-black/0"
+          : ""
+      }`}
+  >
+    <div class="mr-10 mb-12 rounded-tl-2xl rounded-br-2xl bg-black/90">
+      <h1 class="p-3 pb-1 text-2xl font-bold text-white md:text-3xl">
+        {post.data.title}
+      </h1>
+      <p class="text-md p-3 pt-2 text-neutral-300">
+        {post.data.description}
+      </p>
+    </div>
+    <div
+      class="absolute bottom-0.5 left-0.5 rounded-tr-2xl rounded-bl-2xl bg-neutral-950 p-2 text-xs text-neutral-400 outline-2 outline-neutral-700"
+    >
+      <p>{dayjs(post.data.date).format("MMMM D, YYYY")}</p>
+      <div class="mt-1 flex flex-wrap gap-1">
+        {
+          post.data.tags.map((tag) => (
+            <>
+              <span class="rounded-md bg-neutral-300 px-1 py-0.5 font-semibold text-neutral-900">
+                {tag}
+              </span>
+            </>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+  <div class="absolute col-span-2 h-full w-full transform-[scale(0.999)]">
+    <Image
+      src={post.data.banner}
+      alt="blog post banner image"
+      decoding="sync"
+      loading="eager"
+      fetchpriority="high"
+      format="avif"
+      class="max-h-full min-h-full w-full rounded-2xl object-cover md:h-96"
+    />
+  </div>
+</div>

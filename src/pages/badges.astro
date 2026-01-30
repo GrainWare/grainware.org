@@ -1,0 +1,52 @@
+---
+import NavBar from "../components/NavBar.astro";
+import Layout from "../layouts/Layout.astro";
+
+import { Image } from "astro:assets";
+---
+
+<Layout>
+  <Fragment slot="head">
+    <!-- Primary Meta Tags -->
+    <title>badges</title>
+    <meta name="description" content="super accurate" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="badges" />
+    <meta
+      property="og:description"
+      content="badges that we made under the CC0 license"
+    />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="badges" />
+    <meta
+      property="twitter:description"
+      content="badges that we made under the CC0 license"
+    />
+  </Fragment>
+
+  <NavBar />
+  <div class="m-8 mt-0 flex flex-row flex-wrap">
+    <div class="m-4 flex w-22 flex-col items-center">
+      <Image
+        src="/88x31/grain.webp"
+        alt="badge version 1"
+        width="88"
+        height="31"
+      />
+      <code class="text-sm text-white">for people of the grain</code>
+    </div>
+    <div class="m-4 flex w-22 flex-col items-center">
+      <Image
+        src="/88x31/poweredbygrainware.webp"
+        alt="badge version 1"
+        width="88"
+        height="31"
+      />
+      <code class="text-sm text-white">for sites hosted by grainware</code>
+    </div>
+  </div>
+</Layout>

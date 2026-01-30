@@ -1,0 +1,104 @@
+<div
+  class="sticky top-0 z-50 flex flex-row items-center bg-black/50 p-4 text-white"
+>
+  <nav
+    class="flex w-full items-center justify-between gap-4 text-3xl font-bold md:justify-start md:text-4xl"
+  >
+    <a href="/" class="text-grain-100 hover:underline"> grainware</a>
+    <div class="ml-4 hidden gap-8 font-normal md:flex">
+      <a
+        href="/blog"
+        class="text-grain-200 transition-transform hover:scale-105 hover:drop-shadow-xs hover:drop-shadow-red-300"
+        >blog</a
+      >
+      <a
+        href="/badges"
+        class="text-grain-200 transition-transform hover:scale-105 hover:drop-shadow-xs hover:drop-shadow-orange-300"
+        >badges</a
+      >
+    </div>
+    <details class="relative ml-auto flex items-center md:hidden" data-nav>
+      <summary
+        class="flex cursor-pointer list-none items-center rounded-full p-2 outline-none focus-visible:ring-2 focus-visible:ring-pink-300/70"
+        aria-label="Toggle navigation"
+      >
+        <span class="sr-only">Toggle navigation</span>
+        <span
+          class="icon-[solar--hamburger-menu-linear] inline-block h-10 w-10 shrink-0 align-middle text-pink-300 transition-all hover:scale-105"
+          aria-hidden="true"></span>
+      </summary>
+      <div
+        id="mobile-nav-dropdown"
+        class="dropdown-menu absolute top-full right-0 z-50 mt-2 w-48 rounded-lg border border-white/10 bg-black/80 p-4 text-xl font-normal shadow-xl backdrop-blur-2xl"
+        role="menu"
+      >
+        <a
+          href="/blog"
+          class="text-grain-200 block py-2 transition-transform hover:scale-105 hover:drop-shadow-xs hover:drop-shadow-red-300"
+          role="menuitem"
+          data-nav-close>blog</a
+        >
+        <a
+          href="/badges"
+          class="text-grain-200 block py-2 transition-transform hover:scale-105 hover:drop-shadow-xs hover:drop-shadow-orange-300"
+          role="menuitem"
+          data-nav-close>badges</a
+        >
+      </div>
+    </details>
+  </nav>
+</div>
+
+<script>
+  const navSelector = "[data-nav]";
+
+  const getNav = () => {
+    const nav = document.querySelector(navSelector);
+    return nav instanceof HTMLDetailsElement ? nav : null;
+  };
+
+  const closeNav = () => {
+    const nav = getNav();
+    if (nav?.open) nav.removeAttribute("open");
+  };
+
+  document.addEventListener("pointerdown", (event) => {
+    const nav = getNav();
+    if (!nav?.open) return;
+    if (!(event.target instanceof Node)) return;
+    if (!nav.contains(event.target)) closeNav();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    const nav = getNav();
+    if (event.key === "Escape" && nav?.open) {
+      closeNav();
+      const summary = nav.querySelector("summary");
+      if (summary instanceof HTMLElement) summary.focus();
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLElement)) return;
+    if (target.closest("[data-nav-close]")) closeNav();
+  });
+</script>
+
+<style>
+  details[data-nav] {
+    min-height: 2.75rem;
+  }
+
+  details[data-nav] summary {
+    list-style: none;
+  }
+
+  details[data-nav] summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details[data-nav]:not([open]) .dropdown-menu {
+    display: none;
+  }
+</style>

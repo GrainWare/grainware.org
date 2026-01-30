@@ -1,0 +1,33 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <Fragment slot="head">
+    <!-- Primary Meta Tags -->
+    <title>you fucked up</title>
+    <meta name="description" content="my website" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="you fucked up" />
+    <meta property="og:description" content="404 not found" />
+    <meta property="og:image" content="/assets/saga.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="you fucked up" />
+    <meta property="twitter:description" content="404 not found" />
+    <meta property="twitter:image" content="/assets/saga.png" />
+  </Fragment>
+
+  <div class="flex min-h-screen flex-col items-center justify-center">
+    <h1 class="text-9xl text-white">404</h1>
+    <a
+      href="/"
+      class="mt-4 text-3xl text-red-500 underline duration-100 hover:text-red-400"
+      >escape</a
+    >
+  </div>
+</Layout>

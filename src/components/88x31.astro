@@ -1,0 +1,73 @@
+---
+import { Image } from "astro:assets";
+import data from "@a/json/88x31.json";
+---
+
+<script is:inline>
+  // accurotate technology enable
+  (() => {
+    let enabled = false;
+    let prevAnimation = "";
+    let audio;
+    let credit;
+
+    function enable() {
+      if (enabled) return;
+      enabled = true;
+      prevAnimation = document.body.style.animation;
+      document.body.style.animation = "accurotate 25s linear infinite";
+
+      audio = document.createElement("audio");
+      audio.src =
+        "https://accuratelinuxgraphs.com/assets/audio/extremebinarydrumandbass.mp3";
+      audio.autoplay = true;
+      audio.loop = true;
+      document.body.appendChild(audio);
+
+      credit = document.createElement("div");
+      credit.className = "fixed bottom-2 left-2 z-50 text-white text-2xl";
+      credit.innerHTML =
+        'Audio Credit: <a href="https://opengameart.org/content/extreme-binary-dnb">Gobusto - Extreme Binary DnB</a>';
+      document.documentElement.appendChild(credit);
+    }
+
+    function disable() {
+      if (!enabled) return;
+      enabled = false;
+      document.body.style.animation = prevAnimation;
+      audio?.pause();
+      audio?.remove();
+      credit?.remove();
+      audio = undefined;
+      credit = undefined;
+    }
+
+    function toggle() {
+      if (enabled) disable();
+      else enable();
+    }
+
+    // Make it callable from onclick="accurotate()"
+    window.accurotate = toggle;
+  })();
+</script>
+
+<div class="mt-0 flex flex-wrap">
+  {
+    data.map((item) => (
+      <a href={item.href ?? null} onclick={item.onclick ?? null}>
+        <Image
+          src={`/88x31/${item.name}`}
+          alt={item.alt}
+          width={88}
+          height={31}
+          decoding="sync"
+          loading="eager"
+          fetchpriority="high"
+          class="m-2 drop-shadow-lg drop-shadow-black transition-transform hover:scale-120"
+          style="image-rendering: crisp-edges;"
+        />
+      </a>
+    ))
+  }
+</div>

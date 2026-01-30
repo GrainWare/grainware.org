@@ -1,0 +1,52 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import NavBar from "../../components/NavBar.astro";
+import dayjs from "dayjs";
+import { Image } from "astro:assets";
+import PostHeader from "../../components/PostHeader.astro";
+
+// based off https://docs.astro.build/en/guides/content-collections/#building-for-static-output-default
+
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { id: post.id },
+    props: { post },
+  }));
+}
+// 2. For your template, you can get the entry directly from the prop
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout>
+  <Fragment slot="head">
+    <!-- Primary Meta Tags -->
+    <title>{post.data.title}</title>
+    <meta name="description" content={post.data.description} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content={post.data.title} />
+    <meta property="og:description" content={post.data.description} />
+    <meta property="og:image" content={post.data.banner.src} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={post.data.title} />
+    <meta property="twitter:description" content={post.data.description} />
+    <meta property="twitter:image" content={post.data.banner.src} />
+  </Fragment>
+
+  <NavBar />
+  <div class="mx-auto max-w-240">
+    <PostHeader post={post} hoverAnimation={false} />
+  </div>
+  <div
+    class="prose prose-invert m-12 mx-auto mt-6 max-w-4xl rounded-2xl bg-black/50 p-4 backdrop-blur-md"
+  >
+    <Content />
+  </div>
+</Layout>

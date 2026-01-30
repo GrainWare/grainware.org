@@ -1,0 +1,42 @@
+---
+import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
+
+import "@fontsource/comic-relief";
+import comicReliefWoff2 from "@fontsource/comic-relief/files/comic-relief-latin-400-normal.woff2";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.webp" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- preload main font -->
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href={comicReliefWoff2}
+      crossorigin="anonymous"
+    />
+    <!-- preload bg -->
+    <link rel="preload" as="image" href="/assets/tux.avif" type="image/avif" />
+
+    <slot name="head" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style>
+  html,
+  body {
+    margin: 0;
+  }
+</style>
+
+<ClientRouter />

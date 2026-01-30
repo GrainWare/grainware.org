@@ -1,0 +1,56 @@
+[
+  {
+    "name": "grain.webp",
+    "alt": "grainware.org",
+    "href": "https://grainware.org/"
+  },
+  {
+    "name": "poweredbygrainware.webp",
+    "alt": "powered by grainware",
+    "href": "https://grainware.org/"
+  },
+  {
+    "name": "badgev1.webp",
+    "alt": "electron271.gay",
+    "href": "https://electron271.gay/"
+  },
+  {
+    "name": "accurotate.webp",
+    "alt": "accurotate technology",
+    "onclick": "accurotate()"
+  },
+  {
+    "name": "accuracy.webp",
+    "alt": "Accurate Linux Graphs",
+    "href": "https://accuratelinuxgraphs.com/"
+  },
+  {
+    "name": "pve.webp",
+    "alt": "Powered by Proxmox Virtual Environment",
+    "href": "https://proxmox.com/en/products/proxmox-virtual-environment/overview"
+  },
+  {
+    "name": "debian.webp",
+    "alt": "Powered by Debian",
+    "href": "https://www.debian.org/"
+  },
+  {
+    "name": "wes.webp",
+    "alt": "wesbryie.com",
+    "href": "https://wesbryie.com/"
+  },
+  {
+    "name": "linux.webp",
+    "alt": "Powered by Linux"
+  },
+  {
+    "name": "aegea.webp",
+    "alt": "aegea",
+    "href": "http://aegea.satanistdates.com/"
+  },
+  {
+    "name": "owuh.webp",
+    "alt": "owuh",
+    "href": "https://owuh.dev/"
+  }
+]
